@@ -44,6 +44,9 @@ class PersonaController extends Controller
         $this->middleware('can:personas.edit')->only('edit', 'update');
         $this->middleware('can:personas.destroy')->only('destroy');
         $this->middleware('can:personas.show')->only('show');
+        // Aplicar middleware para restringir el acceso a los métodos específicos
+        $this->middleware('permission:personas.imprimirPorIds')->only('imprimirPorIds');
+        $this->middleware('permission:personas.imprimirTodossumarios')->only('imprimirTodossumarios');
     }
     public function index(Request $request)
     {
